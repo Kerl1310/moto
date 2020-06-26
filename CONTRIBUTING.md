@@ -11,7 +11,7 @@ You should be able to run `make init` to install the dependencies and then `make
 
 ## Linting
 
-Run `make lint` or `black --check moto tests` to verify whether your code confirms to the guidelines.
+Run `make lint` or `black --check moto tests` to verify whether your code conforms to the guidelines.
 
 ## Getting to grips with the codebase
 

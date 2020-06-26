@@ -194,6 +194,12 @@ class EmailResponse(BaseResponse):
         template = self.response_template(GET_TEMPLATE)
         return template.render(template_data=template_data)
 
+    def delete_template(self):
+        template_name = self._get_param("TemplateName")
+        template_data = ses_backend.delete_template(template_name)
+        template = self.response_template(DELETE_TEMPLATE)
+        return template.render(template_data=template_data)
+
     def list_templates(self):
         email_templates = ses_backend.list_templates()
         template = self.response_template(LIST_TEMPLATES)

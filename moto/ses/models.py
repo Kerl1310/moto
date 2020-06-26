@@ -295,6 +295,11 @@ class SESBackend(BaseBackend):
             raise TemplateDoesNotExist("Invalid Template Name.")
         return self.templates[template_name]
 
+    def delete_template(self, template_name):
+        if not self.templates.get(template_name, None):
+            raise TemplateDoesNotExist("Invalid Template Name.")
+        return {}
+
     def list_templates(self):
         return list(self.templates.values())
 

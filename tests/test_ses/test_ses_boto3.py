@@ -453,3 +453,18 @@ def test_create_ses_template():
 
     result = conn.list_templates()
     result["TemplatesMetadata"][0]["Name"].should.equal("MyTemplate")
+
+@mock_ses
+def test_delete_ses_template():
+    conn = boto3.client("ses", region_name="us-east-1")
+
+    conn.delete_template(
+        TemplateName="MyTemplate"
+    )
+    with assert_raises(ClientError) as ex:
+        conn.delete_template(
+            TemplateName="MyTemplate"
+        )
+
+    ex.exception.response["Error"]["Code"].should.equal("TemplateDoesNotExist")
+
